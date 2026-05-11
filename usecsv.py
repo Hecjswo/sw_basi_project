@@ -1,7 +1,7 @@
 import csv
 
 def opencsv(filename):
-    f = open(filename, 'r')
+    f = open(filename, 'r', encoding = 'utf-8-sig')
     reader = csv.reader(f)
     output = []
     for i in reader:
@@ -14,3 +14,13 @@ def writecsv(filename, a_list):
     csvobject = csv.writer(f, delimiter = ',')
     csvobject.writerows(a_list)
     f.close()
+
+def switch(listname):
+    for i in listname:
+        for j in i:
+            try:
+                i[i.index(j)] = float(re.sub(',', '', j))
+            except:
+                pass
+
+    return listname
